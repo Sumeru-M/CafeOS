@@ -28,7 +28,7 @@
 - **Algorithm**: On-device least-squares linear regression over usage history
 - Every quantity change is recorded as a `UsageSnapshot` in Firestore
 - Predicts days until depletion: *"Milk will run out in ~2 days"*
-- 3-tier severity: 🔴 Critical (≤2 days) / 🟡 Warning (≤5 days) / ✅ OK
+- 3-tier severity: Critical (≤2 days) / Warning (≤5 days) / OK
 - Confidence score based on number of data points (caps at 14)
 - Zero external API dependencies — runs entirely on-device
 
@@ -141,10 +141,10 @@ Sites like LinkedIn, Indeed, and Naukri use bot protection (CAPTCHA, login walls
 
 | # | Strategy | How | Result |
 |---|----------|-----|--------|
-| 1 | **ATS Direct API** | Greenhouse & Lever expose free public JSON APIs | ✅ Works reliably |
-| 2 | **WKWebView + JS DOM** | Hidden WKWebView fully renders JS, inject JS to extract `outerHTML`, parse with SwiftSoup | ✅ Works for most ATS (Workday, BambooHR) |
-| 3 | **URLSession + SwiftSoup** | HTTP GET with browser User-Agent, parse HTML | ⚠️ Blocked by LinkedIn (999), Indeed (403), Naukri (CAPTCHA) |
-| 4 | **Third-Party API** | ScrapingBee / Browserless.io headless Chrome | 💡 Works but requires paid key — documented, not hard-coded |
+| 1 | **ATS Direct API** | Greenhouse & Lever expose free public JSON APIs | Works reliably |
+| 2 | **WKWebView + JS DOM** | Hidden WKWebView fully renders JS, inject JS to extract `outerHTML`, parse with SwiftSoup | Works for most ATS (Workday, BambooHR) |
+| 3 | **URLSession + SwiftSoup** | HTTP GET with browser User-Agent, parse HTML | Blocked by LinkedIn (999), Indeed (403), Naukri (CAPTCHA) |
+| 4 | **Third-Party API** | ScrapingBee / Browserless.io headless Chrome | Works but requires paid key — documented, not hard-coded |
 
 # What Failed & Why
 - **URLSession alone**: LinkedIn returns HTTP 999 (custom block code); Indeed returns 403. No session cookies = rejected.
