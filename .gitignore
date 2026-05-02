@@ -1,0 +1,7 @@
+GoogleService-Info.plist
+.DS_Store
+/.build
+/Packages
+xcuserdata/
+*.xcworkspace
+.swiftpm/
