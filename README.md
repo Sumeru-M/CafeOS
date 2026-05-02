@@ -218,7 +218,3 @@ The app will crash on launch without `GoogleService-Info.plist`. For a quick dem
 | [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk) | 10.24+ | Firestore + Auth |
 | [SwiftSoup](https://github.com/scinfu/SwiftSoup) | 2.7+ | HTML parsing for job scraper |
 
-
-# License
-
-MIT © 2024
