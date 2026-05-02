@@ -3,10 +3,12 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 // MARK: - AppState
 
 /// Global app state — passed as an environment object through the view hierarchy.
+@MainActor
 final class AppState: ObservableObject {
     @Published var hasCompletedOnboarding = false
     let authViewModel     = AuthViewModel()

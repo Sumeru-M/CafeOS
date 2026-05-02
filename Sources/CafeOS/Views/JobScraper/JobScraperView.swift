@@ -24,7 +24,7 @@ struct JobScraperView: View {
                 // Result or loading
                 if isLoading { loadingSection }
                 else if let result { ResultView(job: result) }
-                else if let err    { errorSection(err) }
+                else if let errorMsg { errorSection(errorMsg) }
 
                 // Strategy explanation (always visible)
                 strategyExplanation
@@ -108,16 +108,16 @@ struct JobScraperView: View {
             if showApproach {
                 VStack(alignment: .leading, spacing: 12) {
                     ApproachRow(number: "1", title: "ATS Direct API ✅",
-                                body: "Greenhouse and Lever expose public JSON APIs. We hit these first — fastest and most reliable. Works without auth.",
+                                content: "Greenhouse and Lever expose public JSON APIs. We hit these first — fastest and most reliable. Works without auth.",
                                 color: .cafeSage)
                     ApproachRow(number: "2", title: "WKWebView + JS DOM ✅",
-                                body: "Load the page in a hidden WKWebView (full JS rendering), wait 1.5s, inject JS to extract outerHTML, then parse with SwiftSoup. Works on Workday, BambooHR, and most ATS platforms.",
+                                content: "Load the page in a hidden WKWebView (full JS rendering), wait 1.5s, inject JS to extract outerHTML, then parse with SwiftSoup. Works on Workday, BambooHR, and most ATS platforms.",
                                 color: .cafeCaramel)
                     ApproachRow(number: "3", title: "URLSession + SwiftSoup ⚠️",
-                                body: "Simple HTTP GET with a browser User-Agent. Fast, but blocked by LinkedIn (999), Indeed (403), and Naukri (CAPTCHA).",
+                                content: "Simple HTTP GET with a browser User-Agent. Fast, but blocked by LinkedIn (999), Indeed (403), and Naukri (CAPTCHA).",
                                 color: .orange)
                     ApproachRow(number: "4", title: "Third-Party API (Not Implemented) 💡",
-                                body: "ScrapingBee, Browserless.io, or Diffbot handle bot protection via headless Chrome. Requires paid API key. Best production option for blocked sites.",
+                                content: "ScrapingBee, Browserless.io, or Diffbot handle bot protection via headless Chrome. Requires paid API key. Best production option for blocked sites.",
                                 color: .secondary)
                 }
                 .padding([.horizontal, .bottom], AppLayout.padding)
@@ -199,7 +199,7 @@ struct ResultView: View {
 struct ApproachRow: View {
     let number: String
     let title: String
-    let body: String
+    let content: String
     let color: Color
 
     var body: some View {
@@ -212,7 +212,7 @@ struct ApproachRow: View {
                 .clipShape(Circle())
             VStack(alignment: .leading, spacing: 4) {
                 Text(title).font(AppFonts.heading(14))
-                Text(body).font(AppFonts.body_(13)).foregroundColor(.secondary)
+                Text(content).font(AppFonts.body_(13)).foregroundColor(.secondary)
             }
         }
     }
